@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1610041885 source:c:\users\hadil mahmoudi\desktop\mon répertoire\contact\main.c
+	<stdio.h>
+	<stdlib.h>
+	"contact.h"
+	<string.h>
+	<time.h>
+
+1610047199 c:\users\hadil mahmoudi\desktop\mon répertoire\contact\contact.h
+
+1610047198 source:c:\users\hadil mahmoudi\desktop\mon répertoire\contact\contact.c
+	"contact.h"
+	<stdio.h>
+	<string.h>
+
+1610358631 source:c:\users\omen\desktop\miniprojet\contact.c
+	"contact.h"
+	<stdio.h>
+	<string.h>
+
+1610358647 c:\users\omen\desktop\miniprojet\contact.h
+
+1610358618 source:c:\users\omen\desktop\miniprojet\main.c
+	<stdio.h>
+	<stdlib.h>
+	"contact.h"
+	<string.h>
+	<time.h>
+
