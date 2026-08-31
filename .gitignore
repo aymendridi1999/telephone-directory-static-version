@@ -1,0 +1,13 @@
+bin/
+obj/
+*.o
+*.exe
+*.layout
+*.depend
+
+contact
+test_contact
+
+repertoire.txt
+favoris.txt
+blacklist.txt

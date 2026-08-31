@@ -1,0 +1,23 @@
+name: C build
+
+on:
+  push:
+    branches:
+      - master
+      - "fix/**"
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: make CFLAGS="-std=c11 -Wall -Wextra -Wpedantic -Werror"
+
+      - name: Test
+        run: make test CFLAGS="-std=c11 -Wall -Wextra -Wpedantic -Werror"
