@@ -38,6 +38,38 @@ static int contient_id(const Ctc liste[], int taille, int identifiant)
     return Rechercher_contact_par_id(liste, taille, identifiant) != -1;
 }
 
+static void synchroniser_contact_dans_liste(
+    const Ctc *contact,
+    Ctc liste[],
+    int taille_liste
+)
+{
+    int index = Rechercher_contact_par_id(
+        liste,
+        taille_liste,
+        contact->Identifiant
+    );
+
+    if (index != -1)
+    {
+        liste[index] = *contact;
+    }
+}
+
+static void supprimer_id_de_liste_si_present(
+    Ctc liste[],
+    int *taille_liste,
+    int identifiant
+)
+{
+    int index = Rechercher_contact_par_id(liste, *taille_liste, identifiant);
+
+    if (index != -1)
+    {
+        Supprimer_contact(liste, taille_liste, index);
+    }
+}
+
 static void ajouter_contact_existant(
     const Ctc repertoire[],
     int taille_repertoire,
@@ -268,6 +300,16 @@ int main(void)
                     if (strcmp(rep, "oui") == 0)
                     {
                         Modifier_contact(Tab_contact, Taille_Tab, index);
+                        synchroniser_contact_dans_liste(
+                            &Tab_contact[index],
+                            Tab_favoris,
+                            N1
+                        );
+                        synchroniser_contact_dans_liste(
+                            &Tab_contact[index],
+                            Tab_blacklist,
+                            N2
+                        );
                     }
                 }
                 break;
@@ -289,6 +331,16 @@ int main(void)
 
                     if (strcmp(rep, "oui") == 0)
                     {
+                        supprimer_id_de_liste_si_present(
+                            Tab_favoris,
+                            &N1,
+                            identifiant
+                        );
+                        supprimer_id_de_liste_si_present(
+                            Tab_blacklist,
+                            &N2,
+                            identifiant
+                        );
                         Supprimer_contact(Tab_contact, &Taille_Tab, index);
                     }
                 }
